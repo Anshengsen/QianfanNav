@@ -11,38 +11,46 @@
 </head>
 <body>
   <header>
-    <a href="./" class="logo-link">
-      <img src="icon/千帆导航.svg" alt="千帆 Logo" class="logo-img">
-      <h1>千帆书签</h1>
-    </a>
+    <div class="header-left">
+        <a href="./" class="logo-link">
+          <img src="icon/千帆导航.svg" alt="千帆 Logo" class="logo-img">
+          <h1>千帆书签</h1>
+        </a>
 
-    <nav id="mainNav"></nav>
+        <nav id="mainNav"></nav>
 
-    <ul id="productsNav" class="nav-group-container">
-      <li class="nav-group">
-        <button class="group-btn">
-          <span>其他网站</span>
-        </button>
-        <ul class="category-list product-list">
-            <li><a href="#" class="category-btn active">千帆书签</a></li>
-            <li><a href="https://anshengsen.github.io/QianfanWallpaper/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆壁纸</a></li>
-            <li><a href="https://anshengsen.github.io/QianfanCreative/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆创意</a></li>
-            <li><a href="https://anshengsen.github.io/QianfanTag/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆标签</a></li>
-            <li><a href="https://anshengsen.github.io/QianfanColor/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆色卡</a></li>
-            <li><a href="https://anshengsen.github.io/QianfanPicker/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆拾色</a></li>
+        <ul id="productsNav" class="nav-group-container">
+          <li class="nav-group">
+            <button class="group-btn">
+              <span>其他网站</span>
+            </button>
+            <ul class="category-list product-list">
+                <li><a href="#" class="category-btn active">千帆书签</a></li>
+                <li><a href="https://anshengsen.github.io/QianfanWallpaper/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆壁纸</a></li>
+                <li><a href="https://anshengsen.github.io/QianfanCreative/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆创意</a></li>
+                <li><a href="https://anshengsen.github.io/QianfanTag/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆标签</a></li>
+                <li><a href="https://anshengsen.github.io/QianfanColor/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆色卡</a></li>
+                <li><a href="https://anshengsen.github.io/QianfanPicker/" target="_blank" rel="noopener noreferrer" class="category-btn">千帆拾色</a></li>
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
-
-    <div class="search-container">
-      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <input type="text" id="searchInput" placeholder="搜索站内网站...">
     </div>
-
-    <button id="themeToggle" title="切换显示模式">
-      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    </button>
+    
+    <div class="header-right">
+        <div class="search-container">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="searchInput" placeholder="搜索站内网站...">
+        </div>
+    
+        <button id="themeToggle" title="切换显示模式">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        
+        <button id="mobileNavToggle" class="mobile-nav-toggle-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </div>
   </header>
 
   <main>
@@ -64,7 +72,7 @@
             <img src="icon/爱发电.png" alt="爱发电" class="donation-icon">
           </a>
         </div>
-<div class="donation-item">
+        <div class="donation-item">
           <a href="https://paypal.me/AnShengsen" target="_blank" rel="noopener noreferrer">
             <img src="icon/paypal.svg" alt="PayPal" class="donation-icon">
           </a>
@@ -127,6 +135,15 @@
         </div>
       </li>
     </ul>
+  </div>
+
+  <div id="mobileNavOverlay"></div>
+  <div id="mobileNavContainer">
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-title">导航</span>
+      <button id="mobileNavCloseBtn">&times;</button>
+    </div>
+    <div id="mobileNavContent"></div>
   </div>
 
   <script src="nav_data.js"></script>
