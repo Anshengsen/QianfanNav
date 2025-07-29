@@ -5,12 +5,6 @@ const searchInput = document.getElementById('searchInput');
 const sidebar = document.getElementById('floating-sidebar');
 const closeSidebarBtn = document.getElementById('closeSidebarBtn');
 
-const mobileNavToggle = document.getElementById('mobileNavToggle');
-const mobileNavContainer = document.getElementById('mobileNavContainer');
-const mobileNavCloseBtn = document.getElementById('mobileNavCloseBtn');
-const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-const mobileNavContent = document.getElementById('mobileNavContent');
-
 let currentGroupIndex = 0;
 let currentCategoryIndex = null; 
 
@@ -111,143 +105,12 @@ function renderNavigation() {
   updateNavActiveState();
 }
 
-function renderMobileNavigation() {
-  mobileNavContent.innerHTML = '';
-  const navList = document.createElement('ul');
-
-  const createMobileCategory = (category, groupIndex, categoryIndex) => {
-    const categoryLi = document.createElement('li');
-    const categoryButton = document.createElement('button');
-    categoryButton.textContent = category.name;
-    categoryButton.className = 'mobile-category-btn';
-    categoryButton.onclick = () => {
-      currentGroupIndex = groupIndex;
-      currentCategoryIndex = categoryIndex;
-      if (searchInput) searchInput.value = '';
-      closeMobileNav();
-      renderAll();
-    };
-    categoryLi.appendChild(categoryButton);
-    return categoryLi;
-  };
-  
-  navData.forEach((group, groupIndex) => {
-    const groupLi = document.createElement('li');
-    const groupButton = document.createElement('button');
-    groupButton.className = 'mobile-nav-group-btn';
-    groupButton.innerHTML = `<span>${group.group}</span>`;
-    groupLi.appendChild(groupButton);
-
-    const groupButtonOnlyLi = document.createElement('li');
-    const groupButtonOnly = document.createElement('button');
-    groupButtonOnly.className = 'mobile-category-btn';
-    groupButtonOnly.textContent = `查看「${group.group}」全部`;
-    groupButtonOnly.onclick = () => {
-        currentGroupIndex = groupIndex;
-        currentCategoryIndex = null;
-        if (searchInput) searchInput.value = '';
-        closeMobileNav();
-        renderAll();
-    };
-    groupButtonOnlyLi.appendChild(groupButtonOnly);
-
-    if (group.categories && group.categories.length > 0) {
-      const categoryList = document.createElement('ul');
-      categoryList.className = 'mobile-category-list';
-      categoryList.appendChild(groupButtonOnlyLi);
-      
-      group.categories.forEach((category, categoryIndex) => {
-        categoryList.appendChild(createMobileCategory(category, groupIndex, categoryIndex));
-      });
-      
-      groupLi.appendChild(categoryList);
-      groupButton.onclick = () => {
-        groupButton.classList.toggle('expanded');
-        categoryList.classList.toggle('expanded');
-      };
-    } else {
-        groupButton.onclick = () => {
-            currentGroupIndex = groupIndex;
-            currentCategoryIndex = null;
-            if (searchInput) searchInput.value = '';
-            closeMobileNav();
-            renderAll();
-        };
-    }
-    navList.appendChild(groupLi);
-  });
-  
-  const productsNavSource = document.getElementById('productsNav');
-  if (productsNavSource) {
-    const mobileProductsNav = productsNavSource.cloneNode(true);
-    mobileProductsNav.removeAttribute('id');
-    
-    mobileProductsNav.querySelectorAll('.nav-group').forEach(group => {
-      const groupButton = group.querySelector('.group-btn');
-      const categoryList = group.querySelector('.category-list');
-      
-      if (groupButton && categoryList) {
-        const mobileGroupLi = document.createElement('li');
-        const mobileGroupBtn = document.createElement('button');
-        mobileGroupBtn.className = 'mobile-nav-group-btn';
-        mobileGroupBtn.innerHTML = groupButton.innerHTML;
-        mobileGroupLi.appendChild(mobileGroupBtn);
-        
-        const mobileCategoryList = document.createElement('ul');
-        mobileCategoryList.className = 'mobile-category-list';
-        
-        categoryList.querySelectorAll('li a').forEach(link => {
-          const mobileLinkLi = document.createElement('li');
-          const mobileLink = link.cloneNode(true);
-          mobileLink.className = 'mobile-category-btn';
-          mobileLink.onclick = () => closeMobileNav();
-          mobileLinkLi.appendChild(mobileLink);
-          mobileCategoryList.appendChild(mobileLinkLi);
-        });
-        
-        mobileGroupLi.appendChild(mobileCategoryList);
-        mobileGroupBtn.onclick = () => {
-          mobileGroupBtn.classList.toggle('expanded');
-          mobileCategoryList.classList.toggle('expanded');
-        };
-        
-        navList.appendChild(mobileGroupLi);
-      }
-    });
-  }
-
-  mobileNavContent.appendChild(navList);
-  updateMobileNavActiveState();
-}
-
-function updateMobileNavActiveState() {
-  document.querySelectorAll('#mobileNavContent .mobile-nav-group-btn, #mobileNavContent .mobile-category-btn').forEach(btn => btn.classList.remove('active'));
-  
-  if (searchInput.value.trim()) return;
-
-  const groupBtn = mobileNavContent.querySelectorAll('.mobile-nav-group-btn')[currentGroupIndex];
-  if(groupBtn) groupBtn.classList.add('active');
-
-  const categoryLists = mobileNavContent.querySelectorAll('.mobile-category-list');
-  if (currentCategoryIndex !== null && categoryLists[currentGroupIndex]) {
-    const categoryBtn = categoryLists[currentGroupIndex].querySelectorAll('.mobile-category-btn')[currentCategoryIndex + 1];
-    if (categoryBtn) categoryBtn.classList.add('active');
-  } else if (currentCategoryIndex === null) {
-      const allBtn = categoryLists[currentGroupIndex]?.querySelector('.mobile-category-btn');
-      if(allBtn) allBtn.classList.add('active');
-  }
-}
-
 function updateNavActiveState() {
   document.querySelectorAll('#mainNav .group-btn, #mainNav .category-btn').forEach(btn => btn.classList.remove('active'));
 
-  if (searchInput.value.trim()) return;
-
   const groupBtn = mainNav.children[currentGroupIndex]?.querySelector('.group-btn');
   if (groupBtn) {
-    if (currentCategoryIndex === null) {
-      groupBtn.classList.add('active');
-    }
+    groupBtn.classList.add('active');
   }
 
   if (currentCategoryIndex !== null) {
@@ -259,7 +122,6 @@ function updateNavActiveState() {
       }
     }
   }
-  updateMobileNavActiveState();
 }
 
 function renderLinks() {
@@ -384,21 +246,8 @@ function toggleTheme() {
   applyTheme(isDark ? 'light' : 'dark');
 }
 
-function openMobileNav() {
-    mobileNavContainer.classList.add('open');
-    mobileNavOverlay.classList.add('open');
-    document.body.classList.add('mobile-nav-active');
-}
-
-function closeMobileNav() {
-    mobileNavContainer.classList.remove('open');
-    mobileNavOverlay.classList.remove('open');
-    document.body.classList.remove('mobile-nav-active');
-}
-
 function renderAll() {
   renderNavigation();
-  renderMobileNavigation();
   renderLinks();
   if (window.scrollY > 0) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -415,10 +264,10 @@ function init() {
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       if (searchInput.value.trim() !== '') {
-        currentCategoryIndex = null;
         document.querySelectorAll('#mainNav .group-btn, #mainNav .category-btn, #productsNav .category-btn').forEach(btn => btn.classList.remove('active'));
+      } else {
+        updateNavActiveState();
       }
-      updateNavActiveState();
       renderLinks();
     });
   }
@@ -434,10 +283,6 @@ function init() {
       sidebar.classList.add('is-hidden');
     });
   }
-
-  mobileNavToggle.addEventListener('click', openMobileNav);
-  mobileNavCloseBtn.addEventListener('click', closeMobileNav);
-  mobileNavOverlay.addEventListener('click', closeMobileNav);
 }
 
 document.addEventListener('DOMContentLoaded', init);
