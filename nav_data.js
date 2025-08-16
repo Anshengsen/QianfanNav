@@ -448,10 +448,22 @@ const navData = [
             "local_icon_name": "tongyiwanxiang"
           },
           {
+            "name": "Wan AI",
+            "url": "https://wan.video/explore",
+            "desc": "通义万相的海外版",
+            "local_icon_name": "tongyiwanxiang"
+          },
+          {
             "name": "Pika",
             "url": "https://pika.art/login",
             "desc": "PikaLabs推出的AI视频生成和编辑工具",
             "local_icon_name": "pika"
+          },
+          {
+            "name": "Google Labs",
+            "url": "https://labs.google/fx/tools/flow",
+            "desc": "谷歌人工智能团队开发的实验性AI工具平台",
+            "local_icon_name": "250816_googlelabs"
           },
           {
             "name": "MOKI",
